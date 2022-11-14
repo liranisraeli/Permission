@@ -14,7 +14,7 @@ import com.google.android.material.button.MaterialButton;
 public class MainActivity extends AppCompatActivity {
     private MaterialButton main_BTN_login;
     private EditText main_EDT_name;
-    private  BatteryManager myBatteryManager;
+    private static BatteryManager myBatteryManager;
 
 
     @Override
@@ -22,29 +22,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
-        getSystemService();
+        initSystemService(MainActivity.this);
         initButton();
+    }
+
+    private void initSystemService(Context context) {
+        myBatteryManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
     }
 
     private void initButton() {
         main_BTN_login.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-               if(isUSBCharging()){
-                   Toast.makeText(MainActivity.this,"phone is charging",Toast.LENGTH_SHORT).show();
+               if(getBatteryPercentage()>90){
+                   Toast.makeText(MainActivity.this,"login successfully - the battery is over 90",Toast.LENGTH_SHORT).show();
+               }
+               else{
+                   Toast.makeText(MainActivity.this,"login failed - the battery must be over 90",Toast.LENGTH_SHORT).show();
                }
             }
         });
     }
 
-    private void getSystemService() {
-         myBatteryManager = (BatteryManager) this.getSystemService(Context.BATTERY_SERVICE);
+    public static int getBatteryPercentage() {
+         return myBatteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
     }
-
-
-    public boolean isUSBCharging(){
-            return myBatteryManager.isCharging();
-        }
 
 
     private void findViews() {
