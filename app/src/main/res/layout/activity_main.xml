@@ -8,11 +8,11 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/main_EDT_name"
+        android:id="@+id/main_EDT_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:hint="please enter your name"
+        android:hint="please enter your password (only numbers)"
         >
 
     </EditText>
@@ -21,7 +21,7 @@
         android:id="@+id/main_BTN_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/main_EDT_name"
+        android:layout_below="@id/main_EDT_password"
         android:layout_centerInParent="true"
         android:backgroundTint="@color/purple_700"
         android:text="Login">

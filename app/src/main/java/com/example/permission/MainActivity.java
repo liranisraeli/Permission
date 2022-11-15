@@ -13,9 +13,8 @@ import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {
     private MaterialButton main_BTN_login;
-    private EditText main_EDT_name;
+    private EditText main_EDT_password;
     private static BatteryManager myBatteryManager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +29,18 @@ public class MainActivity extends AppCompatActivity {
         myBatteryManager = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
     }
 
+
     private void initButton() {
         main_BTN_login.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-               if(getBatteryPercentage()>90){
-                   Toast.makeText(MainActivity.this,"login successfully - the battery is over 90",Toast.LENGTH_SHORT).show();
+                String input = main_EDT_password.getText().toString();
+                int password = Integer.parseInt(input);
+               if(getBatteryPercentage() == password){
+                   Toast.makeText(MainActivity.this,"login successfully - the battery equal to password",Toast.LENGTH_SHORT).show();
                }
                else{
-                   Toast.makeText(MainActivity.this,"login failed - the battery must be over 90",Toast.LENGTH_SHORT).show();
+                   Toast.makeText(MainActivity.this,"login failed",Toast.LENGTH_SHORT).show();
                }
             }
         });
@@ -49,9 +51,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     private void findViews() {
         main_BTN_login = findViewById(R.id.main_BTN_login);
-        main_EDT_name = findViewById(R.id.main_EDT_name);
+        main_EDT_password = findViewById(R.id.main_EDT_password);
 
     }
 
