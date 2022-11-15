@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#9FABBA">
 
     <EditText
         android:id="@+id/main_EDT_password"
@@ -23,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/main_EDT_password"
         android:layout_centerInParent="true"
-        android:backgroundTint="@color/purple_700"
+        android:backgroundTint="@color/black"
         android:text="Login">
 
     </com.google.android.material.button.MaterialButton>
