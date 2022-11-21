@@ -7,14 +7,21 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="#9FABBA">
+    <ImageView
+        android:id="@+id/login_IMG_logo"
+        android:layout_width="150dp"
+        android:layout_height="500dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="-50dp"
+        android:src="@drawable/ic_login" />
 
     <EditText
         android:id="@+id/main_EDT_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:hint="please enter your password (only numbers)"
-        >
+        android:hint="Enter your password (numbers)">
 
     </EditText>
 
@@ -24,7 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/main_EDT_password"
         android:layout_centerInParent="true"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="#28286E"
+        android:textStyle="bold"
         android:text="Login">
 
     </com.google.android.material.button.MaterialButton>
